@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --bg: #ebe8e8e3;
+    --black: #121212;
+    --pdx: 4em;
+    --accent: #FF9600;
+    --white: #F4F4F4;
+}
+
+@font-face {
+    font-family: pop;
+    src: url("./assets/fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+    font-family: urba;
+    src: url("./assets/fonts/Urbanist-Regular.ttf");
+}
+
+/*  */
+
+body {
+    background-color: var(--bg);
+}
+
+.pop {
+    font-family: pop;
+}
+
+.urba {
+    font-family: urba;
+}
+
+.linear {
+    background-image: linear-gradient(#ff950059, #ff950075, #FF9600, white);
+}
