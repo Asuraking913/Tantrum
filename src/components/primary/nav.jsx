@@ -5,13 +5,13 @@ import { FaQuestion } from 'react-icons/fa'
 
 function Nav() {
   return (
-    <header className='bg-[--white] fixed top-0 w-full p-[10px] px-[--pdx] items-center flex justify-between'>
-        <div className='flex items-center'>
+    <header className=' z-[1] fixed top-0 w-full p-[10px] px-[--pdx] items-center flex justify-between'>
+        <div className='flex items-center text-[--white]'>
             <img src={icon} alt="" />
             <a href="#" className='pop text-xl'>Tantrum</a>
         </div>
 
-        <ul className='urba flex gap-[1em] text-[1.1rem]'>
+        <ul className='urba px-[--pdx] flex gap-[1em] text-[1.1rem] text-[--white]'>
             <li>
                 <button href="#">
                         Home

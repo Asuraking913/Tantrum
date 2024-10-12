@@ -35,5 +35,10 @@ body {
 }
 
 .linear {
-    background-image: linear-gradient(#ff950059, #ff950075, #FF9600, white);
+    background-image: linear-gradient(to top right, var(--black), #ff950011);
+}
+
+
+.line {
+    line-height: 1.2em;
 }
