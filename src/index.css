@@ -5,6 +5,7 @@
 :root {
     --bg: #ebe8e8e3;
     --black: #121212;
+    --blackv:rgba(18, 18, 18, 0.185);
     --pdx: 4em;
     --accent: #FF9600;
     --white: #F4F4F4;

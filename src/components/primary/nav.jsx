@@ -6,6 +6,9 @@ import { FaQuestion } from 'react-icons/fa'
 function Nav() {
   return (
     <header className=' z-[1] fixed top-0 w-full p-[10px] px-[--pdx] items-center flex justify-between'>
+        <div className='absolute left-0 z-[-1] backdrop-blur-lg h-full w-full'>
+
+        </div>
         <div className='flex items-center text-[--white]'>
             <img src={icon} alt="" />
             <a href="#" className='pop text-xl'>Tantrum</a>

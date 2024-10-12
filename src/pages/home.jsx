@@ -1,6 +1,7 @@
 import React from 'react'
 import Nav from '../components/primary/nav'
 import Hero from '../components/landing/hero'
+import Descrip from '../components/landing/descrip'
 
 function Home() {
   return (
@@ -8,6 +9,7 @@ function Home() {
         <Nav />
         <article>
           <Hero />
+          <Descrip />
         </article>
     </div>
   )
