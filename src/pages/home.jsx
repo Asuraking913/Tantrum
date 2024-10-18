@@ -9,7 +9,6 @@ function Home() {
         <Nav />
         <article>
           <Hero />
-          <Descrip />
         </article>
     </div>
   )

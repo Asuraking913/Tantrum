@@ -22,7 +22,7 @@ function Descrip() {
     const slideList = slideItems.map((items, i) => <SlideBox {...items}/>)
 
   return (
-    <section className='min-h-[200px] px-[--pdx] flex py-[2em] gap-[1em]'>
+    <section className='min-h-[200px] px-[--pdx] flex py-[1em] gap-[1em]'>
         {slideList}
     </section>
   )

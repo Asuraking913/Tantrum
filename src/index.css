@@ -7,7 +7,7 @@
     --black: #121212;
     --blackv:rgba(18, 18, 18, 0.185);
     --pdx: 4em;
-    --accent: #FF9600;
+    --accent: #E9602C;
     --white: #F4F4F4;
 }
 
@@ -38,6 +38,11 @@ body {
 .linear {
     background-image: linear-gradient(to top right, var(--black), #ff950011);
 }
+
+/* body {
+    background-image: linear-gradient(to top right, var(--black), #ff950011);
+    background-color: black;
+} */
 
 
 .line {
