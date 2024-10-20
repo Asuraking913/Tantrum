@@ -1,10 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Nav from '../components/primary/nav'
+import Story from '../components/stories/story'
+import Form from '../components/stories/form'
 
 function Stories() {
+
+  const [postList, setPostList] = useState([
+    {
+      user: "israelshedrack", 
+      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio incidunt laudantium deserunt assumenda officiis, dolores consequuntur ullam soluta veniam dolorem maxime libero laboriosam doloribus vitae, omnis, placeat cumque doloremque totam.", 
+      likes: 0
+    }, 
+    {
+      user: "israelshedrack", 
+      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio incidunt laudantium deserunt assumenda officiis, dolores consequuntur ullam soluta veniam dolorem maxime libero laboriosam doloribus vitae, omnis, placeat cumque doloremque totam.", 
+      likes: 0
+    },
+    {
+      user: "israelshedrack", 
+      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio incidunt laudantium deserunt assumenda officiis, dolores consequuntur ullam soluta veniam dolorem maxime libero laboriosam doloribus vitae, omnis, placeat cumque doloremque totam.", 
+      likes: 0
+    },
+    {
+      user: "israelshedrack", 
+      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio incidunt laudantium deserunt assumenda officiis, dolores consequuntur ullam soluta veniam dolorem maxime libero laboriosam doloribus vitae, omnis, placeat cumque doloremque totam.", 
+      likes: 0
+    }
+  ])
+
+  const storyList = postList.map((items, i) => <Story {...items}/>)
+
   return (
-    <div className='linear h-screen bg-[--black] w-full'>
+    <div className='linear h-screen bg-[--black] w-full flex items-end'>
         <Nav />
+        <div className='h-[90vh] w-full bg-[--white] mx-[1em] rounded-t-[1em] px-[2em] pt-[2em]'>
+          <Form />
+          {/* { storyList } */}
+        </div>
     </div>
   )
 }
