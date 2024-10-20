@@ -3,6 +3,7 @@ import icon from "../../assets/icon.png"
 import { FaBars, FaGithub, FaTimes } from 'react-icons/fa'
 import { FaQuestion } from 'react-icons/fa'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 function Nav() {
 
@@ -11,12 +12,12 @@ function Nav() {
     const location = useLocation()
 
     useEffect(() => {
-        console.log(location)
+        console.log(location.pathname)
     }, [])
 
 
   return (
-    <header className={`z-[1] sm:h-auto ${nav && "h-screen"} fixed top-0 w-full p-[5px] sm:p-[10px] px-[1em] sm:px-[--pdx] items-center flex justify-between`}>
+    <header className={`z-[1] sm:h-auto ${nav && "h-screen linear bg-[--black] opacity-90"} fixed top-0 w-full p-[5px] sm:p-[10px] px-[1em] sm:px-[--pdx] items-center flex justify-between`}>
         <div className='absolute left-0 z-[-1] backdrop-blur-lg h-full w-full'>
 
         </div>
@@ -33,21 +34,48 @@ function Nav() {
                 <button onClick={() => navigate("/")} href="#">
                     Home
                 </button>
-                {!nav && <div className='absolute w-full h-[20%] duration-[0.5s]  rounded-[4px] bg-[--accent]'>
+                {!nav && 
+                <motion.div
+                initial={{
+                    x: "400px", 
+                    opacity: 0
+                }}
 
-                </div>}
+                animate={{
+                    x: 0, 
+                    opacity: [0, 0, 1]
+                }}
+
+                 className={`absolute ${location.pathname === "/" ? "w-full" : "w-[0%]"} h-[20%] duration-[0.5s]  rounded-[4px] bg-[--accent]`}>
+
+                </motion.div>}
             </li>
-            <li className='p-[10px] sm:p-0 sm:shadow-none shadow-sm shadow-[--white] sm:w-auto w-[200px] flex sm:block sm:justify-normal justify-center sm:rounded-none rounded-[2em] '>
+            <li className='p-[10px] relative sm:p-0 sm:shadow-none shadow-sm shadow-[--white] sm:w-auto w-[200px] flex sm:block sm:justify-normal justify-center sm:rounded-none rounded-[2em] '>
                 <button onClick={() => navigate("/stories")} href="#">
                     Stories
                 </button>
+                {!nav && 
+                <motion.div
+                initial={{
+                    x: "400px", 
+                    opacity: 0
+                }}
+
+                animate={{
+                    x: 0, 
+                    opacity: [0, 0, 1]
+                }}
+
+                 className={`absolute ${location.pathname === "/stories" ? "w-full" : "w-[0%]"} h-[20%] duration-[0.5s]  rounded-[4px] bg-[--accent]`}>
+
+                </motion.div>}
             </li>
-            <li className='p-[10px] sm:p-0 sm:shadow-none shadow-sm shadow-[--white] sm:w-auto w-[200px] flex sm:block sm:justify-normal justify-center sm:rounded-none rounded-[2em] '>
+            {/* <li className='p-[10px] sm:p-0 sm:shadow-none shadow-sm shadow-[--white] sm:w-auto w-[200px] flex sm:block sm:justify-normal justify-center sm:rounded-none rounded-[2em] '>
                 <button href="#" className='flex items-center gap-[10px]'>
                     <span>About</span> 
                 </button>
                 
-            </li>
+            </li> */}
             <li className='p-[10px] sm:p-0 sm:shadow-none shadow-sm shadow-[--white] sm:w-auto w-[200px] flex sm:block sm:justify-normal justify-center sm:rounded-none rounded-[2em] '>
                 <button href="#" className='flex items-center gap-[10px]'>
                     <span>Github</span> 
