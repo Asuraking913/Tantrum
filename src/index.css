@@ -14,11 +14,13 @@
 @font-face {
     font-family: pop;
     src: url("./assets/fonts/Poppins-Regular.ttf");
+    font-display: swap;
 }
 
 @font-face {
     font-family: urba;
     src: url("./assets/fonts/Urbanist-Regular.ttf");
+    font-display: swap;
 }
 
 .hide-scrollbar {
@@ -37,7 +39,7 @@ textarea {
 }
 
 .pop {
-    font-family: pop;
+    font-family: pop, sans-serif;
 }
 
 .urba {
