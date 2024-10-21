@@ -32,6 +32,10 @@ body {
     background-color: var(--bg);
 }
 
+textarea {
+    resize: none;
+}
+
 .pop {
     font-family: pop;
 }

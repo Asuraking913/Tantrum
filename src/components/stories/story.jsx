@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaComment, FaThumbsDown, FaThumbsUp } from 'react-icons/fa';
 import { IoIosPerson } from "react-icons/io";
+import Comment from './comment';
 
 function Story({user, content, likes, time, dislikes}) {
+
+  const [viewComment, setviewComment] = useState(false)
+
+
   return (
     <div className='flex gap-[10px] '>
         <figure className='bg-[--bg] w-[50px] h-[50px] flex items-center justify-center rounded-[50%] shadow-sm shadow-[--blackv]'>
@@ -26,22 +31,23 @@ function Story({user, content, likes, time, dislikes}) {
 
             <div className='flex gap-[2em] items-center'>
 
-              <button className='flex pop gap-[5px] sm:hover:scale-110 duration-[0.5s] items-center justify-center'>
+              <button className='flex pop gap-[5px] opacity-50 sm:hover:opacity-70 sm:hover:scale-110 duration-[0.5s] items-center justify-center'>
                 <FaThumbsUp />
                 {likes !== 0 && <p>{likes}</p>}
               </button>
-              <button className='flex pop gap-[5px] sm:hover:scale-110 duration-[0.5s] items-center justify-center'>
+              <button className='flex pop gap-[5px] opacity-50 sm:hover:opacity-70 sm:hover:scale-110 duration-[0.5s] items-center justify-center'>
                 <FaThumbsDown />
                 <p>{dislikes !== 0 && dislikes}</p>
 
               </button>
-              <button className='flex pop gap-[5px] sm:hover:scale-110 duration-[0.5s] items-center justify-center ml-[20px]'>
+              <button onClick={() => setviewComment(!viewComment)} className='flex pop gap-[5px] opacity-50 sm:hover:opacity-70 sm:hover:scale-110 duration-[0.5s] items-center justify-center ml-[20px]'>
                 <FaComment />
                 <p>reply</p>
 
               </button>
 
             </div>
+            {viewComment && <Comment />}
         </div>
 
     </div>
