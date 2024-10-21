@@ -21,6 +21,11 @@
     src: url("./assets/fonts/Urbanist-Regular.ttf");
 }
 
+.hide-scrollbar {
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
 /*  */
 
 body {

@@ -22,7 +22,17 @@ function Nav() {
 
         </div>
         <div className='flex sm:relative fixed top-0 left-0 p-[10px] sm:p-0  items-center sm:flex-row flex-col text-[--white]'>
-            <img className='w-[30px] sm:w-[40px]' src={icon} alt="" />
+            <motion.div
+            initial={{
+                rotate: "-20deg", 
+            }}
+
+            animate={{
+                rotate: ["-20deg", "20deg", "-20deg", 0]
+            }}
+            >
+                <img className='w-[30px] sm:w-[40px]' src={icon} alt="" />
+            </motion.div>
             <a href="#" className='pop sm:text-xl text-[0.95rem]'>Tantrum</a>
         </div>
 
