@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Nav from "../components/primary/nav";
 import Story from "../components/stories/story";
 import Form from "../components/stories/form";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import Axios from "../utils/Axios";
 
 function Stories() {
   const [postList, setPostList] = useState([
@@ -41,7 +43,30 @@ function Stories() {
     },
   ]);
 
-  const storyList = postList.map((items, i) => <Story {...items} />);
+  let { data, fetchNextPage, isFetchingNextPage, error } = useInfiniteQuery({
+    queryKey : ['stories'], 
+    queryFn: async ({ pageParam = 1 }) => {
+
+      try {
+        const response = await Axios.get("/api/create/post")
+
+        console.log(response.data)
+        if(response.status === 200) {
+          return response.data
+        }
+      }
+
+      catch(error) {
+        console.log(error)
+      }
+    },
+
+    getNextPageParam: (lastPage, pages) => lastPage.length
+  })
+
+
+
+  const storyList = postList.map((items, i) => <Story key={i} {...items} />);
 
   return (
     <div className="linear h-screen bg-[--black] w-full flex items-end sm:justify-normal justify-center">
