@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from "../primary/button"
 import { FaAt, FaCloudUploadAlt, FaImage, FaSmile } from 'react-icons/fa'
 import { motion } from 'framer-motion'
+import submitFunction from '../../utils/submitPost'
+import EmailBox from './emailbox'
 
 function Form() {
+
+  const [content, setContent] = useState("")
+  const [error, setError] = useState("")
+  const [emailDisplay, setEmailDisplay] = useState(false)
+
+
   return (
     <form className='w-full bg-[--bg] rounded-[1em] flex flex-col gap-[10px] p-[8px] sm:pl-[20px] sm:p-[10px]'>
+
+      {emailDisplay && <EmailBox content={content} onError={setError}/>  }
+
         <p>
-            <textarea name="" id="" cols="30" rows="4" placeholder='Share your story...' className='pop bg-transparent w-full outline-none'></textarea>
+            <textarea name="" onChange={(e) => setContent(e.target.value)} id="" cols="30" rows="4" placeholder='Share your story...' className='pop bg-transparent w-full outline-none'></textarea>
         </p>
         <div className='flex justify-between sm:flex-row flex-col gap-[10px]'>
 
@@ -46,10 +57,39 @@ function Form() {
           whileTap={{
             opacity: 0.2
           }}
+
+          onClick={(e) => {
+            e.preventDefault()
+
+            if(!content.length) {
+              setError("Plese enter your story")
+              return 
+            }
+            setEmailDisplay(!emailDisplay)
+          }}
            className='p-[5px] sm:p-[10px]  sm:text-xl text-[1.1rem] urba rounded-[5px] px-[10px] sm:px-[20px] bg-[--accent] sm:hover:scale-105 duration-[0.3s] text-[--white]'>
               Submit
           </motion.button>
         </div>
+        {
+        error && 
+        <motion.p
+        initial={{
+          x: "-2em",
+          opacity: 0
+        }}
+
+        animate={{
+          x: 0, 
+          opacity: 1
+        }}
+
+        transition={{
+          duration: 1
+        }}
+         className='p-[2px] w-[15%] flex justify-center bg-[--accent] rounded-[5px] pop text-[--white]'>     {error}
+        
+        </motion.p>}
     </form>
   )
 }
