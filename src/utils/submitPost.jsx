@@ -1,13 +1,33 @@
 import React from 'react'
 import Axios from "../utils/Axios"
 
-const submitFunction = (e, data) => {
+const submitFunction = async (e, data) => {
     e.preventDefault()
 
     // console.log(data.email)
     // console.log(data.content)
 
-    // const response = Axios.post("/api/create")
+    let targetData = {
+        post_email: data.email, 
+        content: data.content
+    }
+
+    try {
+
+        const response = await Axios.post("/api/create/post/", targetData)
+        if(response.status === 201) {
+            console.log(response)
+            data.onDisplay(t => !t)
+        }
+
+        
+    } catch (error) {
+        if (error) {
+            data.onError("An error occured")
+            console.log(error.response.data)
+        }
+        
+    }
 }
 
 export default submitFunction
