@@ -4,10 +4,8 @@ import Axios from "../utils/Axios"
 const submitFunction = (e, data) => {
     e.preventDefault()
 
-    if(!data.email || data.email.includes("@")) {
-        data.onError("Please enter an email")
-        return
-    }
+    // console.log(data.email)
+    // console.log(data.content)
 
     // const response = Axios.post("/api/create")
 }
