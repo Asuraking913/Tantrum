@@ -15,7 +15,12 @@ function Form() {
   return (
     <form className='w-full bg-[--bg] rounded-[1em] flex flex-col gap-[10px] p-[8px] sm:pl-[20px] sm:p-[10px]'>
 
-      {emailDisplay && <EmailBox content={content} onError={setError}/>  }
+      {
+        emailDisplay && 
+        <div>
+          <EmailBox content={content} onError={setError} onDisplay={setEmailDisplay}/>  
+        </div>
+      }
 
         <p>
             <textarea name="" onChange={(e) => setContent(e.target.value)} id="" cols="30" rows="4" placeholder='Share your story...' className='pop bg-transparent w-full outline-none'></textarea>

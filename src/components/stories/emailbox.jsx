@@ -3,8 +3,9 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import submitFunction from '../../utils/submitPost'
 import { useInterval } from 'react-use'
+import { FaTimes } from 'react-icons/fa'
 
-function EmailBox({content}) {
+function EmailBox({content, onDisplay}) {
 
   const [postEmail, setPostEmail] = useState("")
   const [error, setError] = useState("")
@@ -16,10 +17,11 @@ function EmailBox({content}) {
 
   return (
     <div className='w-full h-full
-     flex items-center justify-center fixed top-0 backdror z-[1] left-0'>
+     flex items-center justify-center fixed top-0 bg-[#00000080] z-[1] left-0' >
       <div className=' top-[20%] left-[25%] h-[200px] w-[400px] bg-[--black] linear rounded-[10px] text-center flex items-center justify-center flex-col p-[4em] gap-[10px]'>
+
           <h1 className='pop text-2xl font-semibold text-[--white]'>Enter your email</h1>
-          <div  className='w-full'>
+          <div  className='w-full relative'>
             <p className='w-full'>
               <input className='p-[10px] w-full outline-none rounded-[2px]' type="email" onChange={(e) => setPostEmail(e.target.value)} name="email" id="email" />
             </p>
