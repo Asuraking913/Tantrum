@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Button from "../primary/button"
 import { FaAt, FaCloudUploadAlt, FaImage, FaSmile } from 'react-icons/fa'
 import { motion } from 'framer-motion'
-import submitFunction from '../../utils/submitPost'
 import EmailBox from './emailbox'
 
 function Form() {
@@ -10,6 +9,17 @@ function Form() {
   const [content, setContent] = useState("")
   const [error, setError] = useState("")
   const [emailDisplay, setEmailDisplay] = useState(false)
+  const [finished, setFinished] = useState(false)
+
+  const contentRef = useRef()
+
+  useEffect(() => {
+    if(finished && content.length > 0) {
+      setContent("")
+      contentRef.current.value = ""
+      setEmailDisplay(t => !t )
+    }
+  }, [finished])
 
 
   return (
@@ -18,12 +28,12 @@ function Form() {
       {
         emailDisplay && 
         <div>
-          <EmailBox content={content} onError={setError} onDisplay={setEmailDisplay}/>  
+          <EmailBox content={content} onError={setError} onDisplay={setEmailDisplay} onFinish={setFinished}/>  
         </div>
       }
 
         <p>
-            <textarea name="" onChange={(e) => setContent(e.target.value)} id="" cols="30" rows="4" placeholder='Share your story...' className='pop bg-transparent w-full outline-none'></textarea>
+            <textarea ref={contentRef} name="" onChange={(e) => setContent(e.target.value)} id="" cols="30" rows="4" placeholder='Share your story...' className='pop bg-transparent w-full outline-none'></textarea>
         </p>
         <div className='flex justify-between sm:flex-row flex-col gap-[10px]'>
 

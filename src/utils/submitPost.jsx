@@ -7,6 +7,8 @@ const submitFunction = async (e, data) => {
     // console.log(data.email)
     // console.log(data.content)
 
+    data.onLoading(true)
+
     let targetData = {
         post_email: data.email, 
         content: data.content
@@ -17,7 +19,8 @@ const submitFunction = async (e, data) => {
         const response = await Axios.post("/api/create/post/", targetData)
         if(response.status === 201) {
             console.log(response)
-            data.onDisplay(t => !t)
+            data.onFinish(t => !t)
+            // data.onLoading(false)
         }
 
         
@@ -25,6 +28,7 @@ const submitFunction = async (e, data) => {
         if (error) {
             data.onError("An error occured")
             console.log(error.response.data)
+            // data.onLoading(false)
         }
         
     }

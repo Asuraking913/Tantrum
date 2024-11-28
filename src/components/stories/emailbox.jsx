@@ -4,11 +4,14 @@ import { useState } from 'react'
 import submitFunction from '../../utils/submitPost'
 import { useInterval } from 'react-use'
 import { FaTimes } from 'react-icons/fa'
+import { FaArrowsSpin } from "react-icons/fa6";
 
-function EmailBox({content, onDisplay}) {
+
+function EmailBox({content, onDisplay, onFinish}) {
 
   const [postEmail, setPostEmail] = useState("")
   const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
 
   useInterval(() => {
     setError("")
@@ -16,7 +19,17 @@ function EmailBox({content, onDisplay}) {
 
 
   return (
-    <div className='w-full h-full
+    <motion.div
+    initial={{
+      rotate: "300deg",
+      scale: 0.5
+    }}
+
+    animate={{
+      rotate: 0, 
+      scale: 1
+    }}
+     className='w-full h-full
      flex items-center justify-center fixed top-0 bg-[#00000080] z-[1] left-0' >
 
           <button onClick={() => {
@@ -50,7 +63,8 @@ function EmailBox({content, onDisplay}) {
                 content : content, 
                 onError: setError, 
                 email: postEmail, 
-                onDisplay: onDisplay
+                onFinish: onFinish, 
+                onLoading: setLoading
             } 
 
             if(!data.email) {
@@ -65,8 +79,8 @@ function EmailBox({content, onDisplay}) {
               submitFunction(e, data)
 
               }}
-             className='p-[5px] sm:p-[10px]  sm:text-xl text-[1.1rem] urba rounded-[5px] px-[10px] sm:px-[20px] bg-[--accent] sm:hover:scale-105 duration-[0.3s] text-[--white] mt-[1em]'>
-              Submit
+             className={`p-[5px] sm:p-[10px] urba rounded-[5px] px-[10px] sm:px-[20px] bg-[--accent] sm:hover:scale-105 ${loading ? "text-3xl " : "sm:text-xl text-[1.1rem]"} duration-[0.3s] text-[--white] mt-[1em]`}>
+              {!loading ? "Submit" : <FaArrowsSpin className='animate-spin' />}
           </motion.button>
           {
             error && 
@@ -93,7 +107,7 @@ function EmailBox({content, onDisplay}) {
           }
           </div>
       </div>
-    </div>
+    </motion.div>
 
   )
 }
